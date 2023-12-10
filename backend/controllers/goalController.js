@@ -13,10 +13,10 @@ const getGoal = (req, res) => {
 };
 
 // @desc    add goal
-// @route   POST /api/goals/:id
+// @route   POST /api/goals/
 // @access  Private
-const addGoal = (req, res) => {
-  res.json({ message: `add single goal: ${req.param.id}` });
+const setGoal = (req, res) => {
+  res.json({ message: `add single goal` });
 };
 
 // @desc    update goal
@@ -33,4 +33,4 @@ const deleteGoal = (req, res) => {
   res.json({ message: `deleted single goal: ${req.param.id}` });
 };
 
-module.exports = { getGoals, getGoal, updateGoal, deleteGoal, addGoal };
+module.exports = { getGoals, getGoal, updateGoal, deleteGoal, setGoal };
