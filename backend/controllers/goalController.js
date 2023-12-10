@@ -9,14 +9,19 @@ const getGoals = (req, res) => {
 // @route   GET /api/goals/:id
 // @access  Private
 const getGoal = (req, res) => {
-  res.json({ message: `got single goal: ${req.param.id}` });
+  res.json({ message: `got single goal: ${req.params.id}` });
 };
 
 // @desc    add goal
 // @route   POST /api/goals/
 // @access  Private
 const setGoal = (req, res) => {
-  res.json({ message: `add single goal` });
+  if (!req.body.text) {
+    res.status(400);
+    throw new Error("Please add a text field");
+  }
+
+  res.json({ message: `added single goal` });
 };
 
 // @desc    update goal
