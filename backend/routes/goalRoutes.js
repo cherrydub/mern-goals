@@ -7,14 +7,19 @@ const {
   deleteGoal,
 } = require("../controllers/goalController");
 const router = express.Router();
+const { protect } = require("../middleware/authMiddleware");
 
-router.route("/").get(getGoals).post(setGoal);
+router.route("/").get(protect, getGoals).post(protect, setGoal);
 
 // router.get("/", getGoals);
 
 // router.post("/", setGoal);
 
-router.route("/:id").get(getGoal).put(updateGoal).delete(deleteGoal);
+router
+  .route("/:id")
+  .get(protect, getGoal)
+  .put(protect, updateGoal)
+  .delete(protect, deleteGoal);
 
 // router.get("/:id", getGoal);
 
